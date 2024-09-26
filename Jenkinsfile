@@ -29,13 +29,15 @@ pipeline {
         }
       stage ('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit -nvdApiKey 26e0005f-e634-4141-84b3-7b2b4bc09e10  ', odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
       stage ('Deploy') {
             steps {
-                sh 'sudo systemctl restart microblog'
+		sh '''#!/bin/bash
+                ssh -i id_ed25519 ubuntu@10.0.0.108 source /home/ubuntu/setup.sh
+
                 '''
             }
         }
