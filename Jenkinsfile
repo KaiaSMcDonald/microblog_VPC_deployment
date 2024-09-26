@@ -6,6 +6,7 @@ pipeline {
                 sh '''#!/bin/bash
                 python3.9 -m venv venv
 		source venv/bin/activate
+		pip install pytest
 		pip install -r requirements.txt
 		pip install gunicorn pymysql cryptography
 		FLASK_APP=microblog.py
