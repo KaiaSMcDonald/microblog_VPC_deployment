@@ -37,7 +37,7 @@ pipeline {
       stage ('Deploy') {
             steps {
 		sh '''#!/bin/bash
-                ssh -i id_ed25519 ubuntu@10.0.0.108 source /home/ubuntu/setup.sh
+                ssh -i id_ed25519.pub  ubuntu@10.0.0.108 source /home/ubuntu/setup.sh
 
                 '''
             }
