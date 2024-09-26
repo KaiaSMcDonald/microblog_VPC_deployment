@@ -76,8 +76,28 @@ $echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenk
    <br>Once into the web server run this command nano ~/.ssh/authorized_keys ( this will allow you to manually add the key to the authorized keys)</br>
    <br>Lastly it is important that the authorized keys file has the right permissions and this can be guaranteed by using the following command: chmod 600 ~/.ssh/authorized_keys</br>
 
+If this step is done correctly the web server instance will be added to the list of known hosts. This means that the remoter server's identity has been stored locally on the client machine. Therefore allowing a secure connection between the client and the server. 
 
+7. Next, Edit the NginX configuration file at "sites-enabled/default" so that "location" reads as below:
+```
+   location / {
+proxy_pass http://<private_IP>:5000;
+proxy_set_header Host $host;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+```
+<br>The part of this code that says private IP should be replaced with the IP address of the application server. </br>
 
+<br>After editing the Nginx configuration we will test it with the following command: sudo nginx -t </br>
+
+8. Next, is copying the key pair (.pem file) of the Application_Server to the Web_Server. This is essential for sshing into the Application Server from the Webserver
+After dowloading the key pair onto the computer use the following commands to successfully accomplish this:
+<br>cd .ssh</br>
+<br>nano WL4keys.pem</br> Cpoy the key pair that was stored on the computer to a .pem file
+<br>chmod 400 WL4keys.pem </br> Change the permissions for the .pem file
+<br>ssh -i WL4keys.pem ubuntu@10.0.0.108</br> This command will allow you to ssh into the Application Server from the Webserver
+
+9. Then, create a start
 
 
 # Kura Labs Cohort 5- Deployment Workload 4
