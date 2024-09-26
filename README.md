@@ -1,3 +1,85 @@
+# Microblog_VPC_deployment 
+
+## Purpose 
+This project aims to help a social media company deploy its application to servers in a vigorous and secure infrastructure. To accomplish this, a new approach will be introduced, which is to separate the deployment and production environments. Resources such as a VPC and the network protocol known as SSH will be utilized to effectively create this separation.
+
+
+The steps below showcase what was done to deploy the application using this approach alongside monitoring the resources used.
+
+## Steps 
+1. To begin clone the repository to a personal repository on my Github account This step will allow customization and contributions to be made without altering the original repository.
+2. Create a custom VPC with one availability zone, a public, and a private subnet.
+   This can be accomplished with the following steps:
+#### Creating a VPC
+-    Select create a VPC
+-    Choose VPC only
+-    Name the VPC
+-    Set the cidr - a example would be 10.0.0./24 which is 256 IP’s
+-    Select no IPV6
+-    Click  on create VPC
+#### Creating a public subnet
+-    Select create a subnet
+-    Select the VPC created earlier
+-    Name Public subnet
+-    Select availability zone (an example is US East (N. Virginia) us-east-1a 
+-    Set IPV4 subnet cidr block to 10.0.0/25
+#### Creating a private subnet 
+-    Select add a new subnet
+-    Name private subnet
+-    Select the same availability zone as the public subnet because they need to be in the same availability zone
+-    The IPV4 VPC CIDR block will be 10.0.0/24
+-    Set IPV4 subnet CIDR block to be 10.0.0.128/25 ( this is 128 IP's)
+
+Following the creation of the VPC and the subnets will be setting up the route tables for the respective subnets 
+This can be accomplished by the following steps:
+1. Create a internet gateway which will be included in the route table for the public subnet
+   	. Select create internet gateway and give the IGW a name
+   	* It is important to attach the IGW to the VPC newly created because without the attachment the IGW will be unable to offers a target in your VPC for internet routable traffic
+2.  Select create a route table and name it
+3.  Then under the route tab, select edit routes and add the Internet Gateway while also ensuring that the destination is set as 0.0.0/0
+        * The 0.0.0/0 ensures there isn't any restrictions in regards to the traffic destination
+
+<br>For the private subnet the NAT Gateway must be created to allow resources within the private subnet to access the internet </br>
+<br> Similar to the steps of creating the IGW the NAT Gateway will be created and added to the private subnet route table </br>
+<br>However when creating the NAT Gateway a elastic IP must be added because it is static IP address and will guarantee that outbound traffic from your private instances in a VPC  will always appear to come from the same public IP address.</br>
+
+3. Next, Create an Ubuntu EC2 instance that is specifically set to be a t3.medium. On this EC2, Jenkins will be installed using the following steps:
+```
+$sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common && sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
+$sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+$echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+    $sudo apt-get update
+    $sudo apt-get install jenkins
+    $sudo systemctl start jenkins
+    $sudo systemctl status jenkins
+
+```
+
+4. Then, Create an Ubuntu EC2 t3.micro named 'Web_Server' in the PUBLIC SUBNET of the Custom VPC.
+   This speicific EC2 should have security groups that will be:
+   ```
+   	
+   SSH  TCP 22   0.0.0.0/0
+   HTTP TCP 80 0.0.0.0/0
+   ```
+
+5. Next, Create an EC2 t3.micro called 'Application_Server' in the PRIVATE SUBNET of the Custom VPC.
+   This particular EC2 should have security groups that will be:
+   ```
+   Custom TCP TCP 5000 0.0.0.0/0
+   SSH TCP 22 0.0.0.0/0
+   ```
+6. Following that, Connect to the Jenkins server and run ssh-keygen command. The key that is generated should be appended to the authorized keys
+   <br>These steps will successfully accomplish this:</br>
+   <br>Run this command cat .ssh/id_ed25519.pub ( this copies the contents of the public key)</br>
+   <br>Run this command ssh ubuntu@3.82.192.72  (ssh into web server)</br>
+   <br>Once into the web server run this command nano ~/.ssh/authorized_keys ( this will allow you to manually add the key to the authorized keys)</br>
+   <br>Lastly it is important that the authorized keys file has the right permissions and this can be guaranteed by using the following command: chmod 600 ~/.ssh/authorized_keys</br>
+
+
+
+
+
 # Kura Labs Cohort 5- Deployment Workload 4
 
 
