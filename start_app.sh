@@ -6,8 +6,7 @@
 #Set environmental variables, flask commands, a gunicorn command that will serve the application in the background 
 
 #Update necessary system dependencies
-sudo apt-get update 
-sudo apt-get install -y python3.9 python3.9-venv python3-pip nginx
+sudo apt update && sudo apt install fontconfig openjdk-17-jre software-properties-common && sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.7 python3.7-venv
 
 # Clone the Github repository 
 REPO_URL= https://github.com/KaiaSMcDonald/microblog_VPC_deployment.git
@@ -26,5 +25,5 @@ flask translate compile
 flask db upgrade
 
 #Start gunicorn in the background
-gunicorn -b :5000 -w 4 microblog:app
+gunicorn -b :5000 -w 4 microblog:app --daemon
 
