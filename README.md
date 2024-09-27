@@ -97,7 +97,9 @@ After dowloading the key pair onto the computer use the following commands to su
 <br>chmod 400 WL4keys.pem </br> Change the permissions for the .pem file
 <br>ssh -i WL4keys.pem ubuntu@10.0.0.108</br> This command will allow you to ssh into the Application Server from the Webserver
 
-9. Then, create a start_app.sh script which will run on the Application. This script holds the commands that will start the application when it runs
+
+
+10. Then, create a start_app.sh script which will run on the Application. This script holds the commands that will start the application when it runs
 
 
 
@@ -123,9 +125,27 @@ These are steps to successfully do VPC peering
 
 12. Editing Jenkinsfile
 
-13. Adding a pytest
-14. Creating Multibranch Pipeline
+There are only two portion of this file that will be edited which is the build and deploy stage. The build stage includes steps to start the application while the deploy stage has steps that locate the startapp file.
 
+13. Adding a pytest
+
+
+
+The breakdown of the pytest created as follows: First is to import the pytest to allow unit tests, fixtures, and other things to be written
+
+Next part is importing the create_app() function, which is responsible for creating and configuring an instance of the Flask application
+
+The pytest.fixture is a function that provides a consistent environment for tests *for example, it will create an environment for creating a test client
+
+Following that would be the app. config[‘TESTING’] = True, which sets the testing mode on for a Flask application
+
+In addition to the following components of the code, the purpose of the def test_config(client) is to verify the test client creation and configuration.
+
+Lastly, the ‘assert client’ ensures that the test client was properly created and can be used to simulate HTTP requests.
+
+15. Creating Multibranch Pipeline
+
+A multibranch pipeline must be created to test whether the code can successfully run through the CI/CD pipline. It is important to add the url of the Github repo so Jenkins as the necessary information run through the stages.
 
 ## System Design Diagram
 
