@@ -202,6 +202,12 @@ The way I would optimize this infrastructure is enhance reliability by implement
 
 
 ## Sources
+https://www.geeksforgeeks.org/ssh-command-in-linux-with-examples/![image](https://github.com/user-attachments/assets/7a4d77d5-6fa7-4bd7-aeb3-a51dc5f1df30)
+
+https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux![image](https://github.com/user-attachments/assets/7d22cf00-ccc2-4ae1-a3d3-5ae3298c2d20)
+
+
+https://chatgpt.com/c/66f62212-9ef0-8008-95dc-339e74e227b9
 
 
 
