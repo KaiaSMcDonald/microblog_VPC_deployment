@@ -107,7 +107,7 @@ After dowloading the key pair onto the computer use the following commands to su
 
 10. Next, create a setup.sh script that will run in the Web_Server that will SSH into the Application_Server to run the start_app.sh script.
 
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%2010.33.33%20PM.png)
 
 <br>This script includes variables that are essential to run a command that will allow the web server to ssh into the application server and then run the start_app script that was created.</br>
 
@@ -122,8 +122,7 @@ These are steps to successfully do VPC peering
 5. Once that route table is selected edit the route and add the peering connection
 6. Then select the route table that is not associated with the VPC created and add the peering connection however the destination should match the CIDR block of the VPC that was created
 
-
-12. Editing Jenkinsfile
+<br> 12. Editing Jenkinsfile </br>
 
 There are only two portion of this file that will be edited which is the build and deploy stage. The build stage includes steps to start the application while the deploy stage has steps that locate the startapp file.
 
