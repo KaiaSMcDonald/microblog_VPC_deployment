@@ -174,7 +174,7 @@ One of the issues I experienced was completing each stage of the CI/CD pipeline 
 
 The other issue I had was completing the delpoy stage of the pipeline. I continued to get the error that the identity file isn't accessible. I believe a solution to this problem may be altering or including the absolute path to the file or change the permissions which might be interfering with the accessibility of the file.
 
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%205.06.15%20PM.png)
 
 
 
