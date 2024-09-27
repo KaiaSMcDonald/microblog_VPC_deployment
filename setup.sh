@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SSH into the Application Server
+# Variables to SSH into the Application Server
 app_server_username="ubuntu"
 app_server_ip="10.0.0.108"
 ssh_key_path="/home/ubuntu/.ssh/WL4keys.pem"
