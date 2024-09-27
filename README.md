@@ -154,7 +154,7 @@ A multibranch pipeline must be created to test whether the code can successfully
 
 ## System Design Diagram
 
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%2010.39.37%20PM.png)
 
 ## Issues/ Troubleshooting 
 
