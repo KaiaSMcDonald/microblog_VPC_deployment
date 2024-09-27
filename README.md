@@ -101,7 +101,7 @@ After dowloading the key pair onto the computer use the following commands to su
 
 10. Then, create a start_app.sh script which will run on the Application. This script holds the commands that will start the application when it runs
 
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%205.51.36%20PM.png)
 
 <br> This script will automate the set up of the application by guaranteeing that all the dependencies are installed and the application is served using Gunicorn in the background.</br>
 
