@@ -128,7 +128,7 @@ There are only two portion of this file that will be edited which is the build a
 
 13. Adding a pytest
 
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-18%20at%2010.20.31%20PM.png)
 
 The breakdown of the pytest created as follows: First is to import the pytest to allow unit tests, fixtures, and other things to be written
 
