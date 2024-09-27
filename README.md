@@ -147,6 +147,9 @@ Lastly, the ‘assert client’ ensures that the test client was properly create
 
 A multibranch pipeline must be created to test whether the code can successfully run through the CI/CD pipline. It is important to add the url of the Github repo so Jenkins as the necessary information run through the stages.
 
+16. Monitoring
+    The purpose of monitoring the resources used and to track if there are any issues that will negatively impact how the application functions.
+
 ## System Design Diagram
 
 
