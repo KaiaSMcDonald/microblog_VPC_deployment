@@ -197,7 +197,7 @@ The way I would optimize this infrastructure is enhance reliability by implement
 
 
 ## Conclusion
-
+This project provides a great opportunity to discover the power of using commands to ssh into another server. It also highlights the importance of establishing a way for different servers and resources to communicate in order for a application to successfully deploy. 
 
 
 
