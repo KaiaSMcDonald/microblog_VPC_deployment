@@ -97,7 +97,72 @@ After dowloading the key pair onto the computer use the following commands to su
 <br>chmod 400 WL4keys.pem </br> Change the permissions for the .pem file
 <br>ssh -i WL4keys.pem ubuntu@10.0.0.108</br> This command will allow you to ssh into the Application Server from the Webserver
 
-9. Then, create a start
+9. Then, create a start_app.sh script which will run on the Application. This script holds the commands that will start the application when it runs
+
+
+
+<br> This script will automate the set up of the application by guaranteeing that all the dependencies are installed and the application is served using Gunicorn in the background.</br>
+
+10. Next, create a setup.sh script that will run in the Web_Server that will SSH into the Application_Server to run the start_app.sh script.
+
+
+
+
+
+11. VPC Peering
+The purpose of VPC Peering is to allow two VPCs to communicate directly to each other.The VPC peering enables low-latency private communication within AWS's internal network without exposing the data to the public internet. However for this specific project VPC is neccessary for many VPC's created to communicate with each other.
+
+These are steps to successfully do VPC peering 
+
+
+
+12. Editing Jenkinsfile
+
+13. Adding a pytest
+14. Creating Multibranch Pipeline
+
+
+## System Design Diagram
+
+
+
+## Issues/ Troubleshooting 
+
+
+One of the issues I experienced was completing each stage of the CI/CD pipeline in Jenkins. On one of the builds I did I recieved a error at the OWASP FS Scan stage. Once I reviewed  the log to identify the error I noticed I didn't install the DP-Check. This also meant that I didn't install the OWASP Dependency Check plug in. The configuration of this plug in will include the DP-Check. Therefore I went through the following steps to make these installations:
+1. Install OWASP Dependency Check
+   Move to "Manage Jenkins"
+   Then  got to Plugins
+   Next go to Available plugins 
+   Lastly  go to Search and install
+2. Install DP-Check
+   Go to Manage Jenkins
+   Then Tools
+   Next Add Dependency-Check
+   Then Name: DP-Check >
+   Select check install automatically
+   Lastly Add Installer: "Install from github.com"
+
+The other issue I had was completing the delpoy stage of the pipeline. I continued to get the error that the identity file isn't accessible. I believe a solution to this problem may be altering or including the absolute path to the file or change the permissions which might be interfering with the accessibility of the file.
+
+
+
+
+
+
+## Optimization 
+There are many advantages of separating the deployment environment from the production environment some of them include:
+Risk Mitigation - When deployment environments are separated they can be tested throughly before impacting a live application. This in return will reduce the risk of introduce issues into production. 
+Security - Separating environments helps restrict access to sensitive production data this will essentially limit the risk of unauthorized access.
+
+The infrastructure created in this workload can be considered a good system because sensitive data is protected due to the fact the environments are separated. I also believe that this infrastructure can be scalable because different EC2 instances were added to cater to the demand. However if the demand or the need changes the infrastructure can be changed to accomodate that change. These two different highlight the ways this infrastructure can be a good system. 
+
+The way I would optimize this infrastructure is enhance reliability by implementing multi-region deployments for geographical redundancy. Especially since this infrastructure is supporting a application for social media company it is common to have users that are in different areas of the country or world. Therefore catering to more regions would reduce latency and other issues.
+
+
+## Sources
+
+
 
 
 # Kura Labs Cohort 5- Deployment Workload 4
