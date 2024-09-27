@@ -156,7 +156,9 @@ A multibranch pipeline must be created to test whether the code can successfully
 ## Issues/ Troubleshooting 
 
 
-One of the issues I experienced was completing each stage of the CI/CD pipeline in Jenkins. On one of the builds I did I recieved a error at the OWASP FS Scan stage. Once I reviewed  the log to identify the error I noticed I didn't install the DP-Check. This also meant that I didn't install the OWASP Dependency Check plug in. The configuration of this plug in will include the DP-Check. Therefore I went through the following steps to make these installations:
+One of the issues I experienced was completing each stage of the CI/CD pipeline in Jenkins. On one of the builds I did I recieved a error at the OWASP FS Scan stage. Once I reviewed  the log to identify the error I noticed I didn't install the DP-Check. This also meant that I didn't install the OWASP Dependency Check plug in. The configuration of this plug in will include the DP-Check. 
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%204.17.36%20PM.png)
+<br> Therefore I went through the following steps to make these installations:</br>
 1. Install OWASP Dependency Check
    Move to "Manage Jenkins"
    Then  got to Plugins
