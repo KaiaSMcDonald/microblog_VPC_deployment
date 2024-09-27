@@ -123,7 +123,7 @@ These are steps to successfully do VPC peering
 6. Then select the route table that is not associated with the VPC created and add the peering connection however the destination should match the CIDR block of the VPC that was created
 
 ![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%207.54.18%20PM.png)
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-26%20at%207.54.46%20PM.png)
 
 <br> 12. Editing Jenkinsfile </br>
 
