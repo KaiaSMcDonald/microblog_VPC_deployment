@@ -97,7 +97,7 @@ After dowloading the key pair onto the computer use the following commands to su
 <br>chmod 400 WL4keys.pem </br> Change the permissions for the .pem file
 <br>ssh -i WL4keys.pem ubuntu@10.0.0.108</br> This command will allow you to ssh into the Application Server from the Webserver
 
-
+![Screenshot 09-26-2024](https://github.com/KaiaSMcDonald/microblog_VPC_deployment/blob/main/Screenshot%202024-09-24%20at%209.55.57%20PM.png)
 
 10. Then, create a start_app.sh script which will run on the Application. This script holds the commands that will start the application when it runs
 
